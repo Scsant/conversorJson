@@ -23,8 +23,8 @@ def convert_excel_to_json_large(excel_file):
             chunk = df[i*chunk_size:(i+1)*chunk_size]
             json_data.extend(chunk.to_dict(orient='records'))
 
-        # Converte a lista completa de registros para JSON estruturado
-        return json.dumps(json_data, indent=4)
+        # Converte a lista completa de registros para JSON estruturado com UTF-8
+        return json.dumps(json_data, indent=4, ensure_ascii=False)
     
     except Exception as e:
         st.error(f"Erro ao processar arquivo Excel: {e}")
